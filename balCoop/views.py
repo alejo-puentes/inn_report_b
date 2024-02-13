@@ -143,6 +143,7 @@ class BalCoopApiViewIndicador(APIView):
 
         results = []
         for item in data:
+            
             for nit_info in item.get("nit", {}).get("solidaria", []):
                 nit = nit_info.get("nit")
                 periodo = item.get("periodo")
