@@ -22,6 +22,10 @@ from pucCoop.urls import urlpatterns_pucCoop
 from pucSup.urls import urlpatterns_pucSup
 from balCoop.urls import urlpatterns_balCoop
 from balSup.urls import urlpatterns_balSup
+from Resumen.urls import urlpatterns_Resumen
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -31,6 +35,10 @@ urlpatterns = [
     path('api/', include(urlpatterns_pucSup)),
     path('api/', include(urlpatterns_balCoop)),
     path('api/', include(urlpatterns_balSup)),
+    path('api/', include(urlpatterns_Resumen)),
     path('api/', include(('core.routers', 'core'), namespace='core-api')),
 
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
